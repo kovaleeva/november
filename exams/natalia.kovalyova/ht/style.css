@@ -1,0 +1,27 @@
+.demo {
+    height: 100em;
+}
+
+.green {
+    background: rgba(177, 228, 185, 0.56);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.yellow {
+    background: rgba(202, 160, 76, 0.73);
+}
+
+
+#selectBox {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+#selectBox.displayed {
+    background-color: rgb(168, 168, 238);
+    border: 1px solid rgb(73, 73, 255);
+}
+
+<script src="hm_event.js"></script>
