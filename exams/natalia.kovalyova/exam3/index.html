@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--<script src="index.js"></script>-->
+<script>
+    "use strict";
+
+    const articles = [
+        {
+            title: 'asd',
+            content: 'hi hi hi pop'
+        },
+        {
+            title: 'asd',
+            content: 'hi hi'
+        },
+        {
+            title: 'pop',
+            content: 'asd'
+        },
+        {
+            title: 'asd',
+            content: 'asd asd'
+        }
+    ];
+
+    let queryString = 'hi';
+
+    if (queryString.trim() === '') console.log([] + 's')  ;
+
+    let querySplit = queryString.split(' '),
+        notRepeat = {};
+
+    querySplit.forEach(el => {
+        if(el !== '') notRepeat[el] = true;
+    });
+
+    let regString = '(\\b|$)(' + Object.keys(notRepeat).join('|') + ')(\\b|$)';
+    let reg = new RegExp(regString, 'ig');
+    let arr = articles.filter(obj => {
+        return (obj.title.match(reg) || obj.content.match(reg)) ? true : false;
+    });
+
+    if (arr.length === 0) console.log(arr + '2');
+
+     arr.sort((a, b) => {
+        let titleA = (a.title.match(reg) === null) ? 0 : a.title.match(reg).length;
+        let titleB = (b.title.match(reg) === null) ? 0 : b.title.match(reg).length;
+
+        let contentA = (a.content.match(reg) === null) ? 0 : a.content.match(reg).length;
+        let contentB = (b.content.match(reg) === null) ? 0 : b.content.match(reg).length;
+
+        let x = titleA + contentA,
+            y = titleB + contentB;
+        if (x > y) return -1;
+        if (x < y) return 1;
+        return 0;
+    })
+    // );
+</script>
+</body>
+</html>
